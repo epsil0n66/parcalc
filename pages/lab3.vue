@@ -13,7 +13,7 @@
     <p>[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]</p>
     <p>[0, 0, 0, 1, 0, 0, 0, 1, 0, 1]</p>
     <p>[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]</p>
-    <p>Введите количество путей:</p>
+    <p>Введите длину пути:</p>
     <v-text-field
     v-model="inputValue"
     @click="inputValue = null">
@@ -50,10 +50,10 @@ export default {
   methods: {
     calculatePaths() {
       this.multipliedMatr = this.matr
-      for (let i = 0; i < this.inputValue; i++) {
+      for (let i = 1; i < this.inputValue; i++) {
+        console.log(i)
         this.multipliedMatr = math.multiply(this.multipliedMatr, this.matr)
       }
-      this.multipliedMatr = math.det(this.multipliedMatr)
     }
   },
 };
