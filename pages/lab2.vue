@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>{{ matr }}</p>
+    <p>{{ randomMatrix }}</p>
     <v-btn
     @click="addition">
       Сложение: +2
@@ -23,7 +23,6 @@
     </v-btn>
     <p>Нулевая матрица: {{ nullMatrix }}</p>
     <p>Единичная матрица: {{ onesMatrix }}</p>
-    <p>Матрица со случайными элементами: {{ randomMatrix }}</p>
     <v-btn
     @click="showInput = true">
       Ввести матрицу:
@@ -80,42 +79,44 @@ export default {
       transposedResult: null,
       evenMultiply: 1,
       evenCount: 0,
+      cleared: null
     };
   },
 
   mounted() {
+    this.cleared = this.randomMatrix
   },
 
   methods: {
     convertInput () {
-      let arr = this.inputValue.split(', ')
+      const arr = this.inputValue.split(', ')
       arr.forEach(el => {
         if (el % 2 === 0) {
           this.evenCount = this.evenCount + 1
           this.evenMultiply = this.evenMultiply * el
         }
       });
-      let matrix = math.matrix([[arr[0], arr[1], arr[2], arr[3]], [arr[4], arr[5], arr[6], arr[7]], [arr[8], arr[9], arr[10], arr[11]], [arr[12], arr[13], arr[14], arr[15]]])
+      const matrix = math.matrix([[arr[0], arr[1], arr[2], arr[3]], [arr[4], arr[5], arr[6], arr[7]], [arr[8], arr[9], arr[10], arr[11]], [arr[12], arr[13], arr[14], arr[15]]])
       this.resultValue = matrix
       this.transposedResult = math.transpose(matrix)
       this.showResult = true
       
     },
     addition() {
-      this.matr = math.add(this.matr, 2)
+      this.randomMatrix = math.add(this.randomMatrix, 2)
     },
     multiplication() {
-      this.matr = math.multiply(this.matr, 2)
+      this.randomMatrix = math.multiply(this.randomMatrix, 2)
     },
     matrixMultiplication() {
-      let b = [2, 2, 2, 2]
-      this.matr = math.multiply(this.matr, b)
+      const b = [2, 2, 2, 2]
+      this.randomMatrix = math.multiply(this.randomMatrix, b)
     },
     power() {
-      this.matr = math.multiply(this.matr, this.matr)
+      this.randomMatrix = math.multiply(this.randomMatrix, this.randomMatrix)
     },
     clear() {
-      this.matr = math.ones(4, 4)
+      this.randomMatrix = this.cleared
     }
   },
 };

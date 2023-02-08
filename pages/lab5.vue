@@ -126,6 +126,10 @@ export default {
       }
     },
     isBlack() {
+      if (this.x > 8 || this.y < 1 || this.x < 1 || this.y > 8 || this.x) {
+        this.black = 'Координаты должны быть в диапазоне от 1 до 8'
+        return
+      }
       this.black = Boolean((this.x % 2 === 0) ^ (this.y % 2 === 0))
     }
   },
