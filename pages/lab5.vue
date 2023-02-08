@@ -126,7 +126,7 @@ export default {
       }
     },
     isBlack() {
-      if (this.x > 8 || this.y < 1 || this.x < 1 || this.y > 8 || this.x) {
+      if (this.x > 8 || this.y < 1 || this.x < 1 || this.y > 8) {
         this.black = 'Координаты должны быть в диапазоне от 1 до 8'
         return
       }
